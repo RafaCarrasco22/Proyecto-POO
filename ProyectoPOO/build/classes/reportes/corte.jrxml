@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7559b7d-37dd-4a31-a289-142498d29292">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="33"/>
+	<queryString>
+		<![CDATA[SELECT
+     socios.`id` AS socios_id,
+     socios.`nombre` AS socios_nombre,
+     socios.`ap_pat` AS socios_ap_pat,
+     socios.`ap_mat` AS socios_ap_mat,
+     socios.`adeudo` AS socios_adeudo,
+     money.`dinero` AS money_dinero
+FROM
+     `socios` socios,
+     `money` money
+WHERE
+     adeudo > 0
+ORDER BY
+     adeudo ASC]]>
+	</queryString>
+	<field name="socios_id" class="java.lang.Integer"/>
+	<field name="socios_nombre" class="java.lang.String"/>
+	<field name="socios_ap_pat" class="java.lang.String"/>
+	<field name="socios_ap_mat" class="java.lang.String"/>
+	<field name="socios_adeudo" class="java.lang.Integer"/>
+	<field name="money_dinero" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="ef33b1d7-d9c2-4c44-a0ef-ede7007247af"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="174" y="20" width="205" height="40" uuid="17648431-0d36-462d-a0e8-6c6e725f9e34"/>
+				<textElement>
+					<font fontName="Ebrima" size="24"/>
+				</textElement>
+				<text><![CDATA[CORTE DE CAJA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="108" height="60" uuid="41f433ba-7b4e-468e-8a7b-d0f2965c96eb"/>
+				<imageExpression><![CDATA["C:\\Users\\Rafael\\Pictures\\portatil.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="344" height="20" uuid="06707f82-0f31-461d-88b3-fd584ee550ff"/>
+				<text><![CDATA[Los siguientes socios presentan adeudos: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="41" height="20" uuid="025e0cc7-1418-435f-ba95-ec73918ccaee"/>
+				<text><![CDATA[ID ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="0" width="100" height="20" uuid="47ae2005-abfd-4588-ba40-0f34f814375d"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="100" height="20" uuid="530b0c51-5a40-4ccc-a42d-9ec6c431434c"/>
+				<text><![CDATA[Apellido Paterno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="0" width="100" height="20" uuid="fb81cb15-163a-493d-ab31-db2c0c8649b3"/>
+				<text><![CDATA[Apellido Materno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="0" width="100" height="20" uuid="9d33186d-b52d-4db7-ad87-019031500fd9"/>
+				<text><![CDATA[Adeudo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="41" height="20" uuid="2edb1a4a-7a20-4ec5-8716-9b4e779c00af"/>
+				<textFieldExpression><![CDATA[$F{socios_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="0" width="100" height="20" uuid="6e897978-c0bf-4ebc-bef8-34a1bd035ecf"/>
+				<textFieldExpression><![CDATA[$F{socios_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="100" height="20" uuid="6c7ab088-fe6c-4692-9c72-b51e051853af"/>
+				<textFieldExpression><![CDATA[$F{socios_ap_pat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="0" width="100" height="20" uuid="aa191ed6-56f9-4ea6-b93e-68e64432d644"/>
+				<textFieldExpression><![CDATA[$F{socios_ap_mat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="0" width="100" height="20" uuid="a7a5ef17-ad15-4423-bfc4-b0176daea786"/>
+				<textFieldExpression><![CDATA[$F{socios_adeudo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="156" y="0" width="100" height="20" uuid="5ec9f2f2-cacf-4093-a49a-088bc9a8c76d"/>
+				<textFieldExpression><![CDATA[$F{money_dinero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="156" height="20" uuid="aa99cb58-640e-4db7-b0a3-b451a0a6614b"/>
+				<text><![CDATA[Se tiene en caja un total de $]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="34" width="80" height="20" uuid="61b1b94b-b02a-49d6-a578-f59dca169738"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="34" width="40" height="20" uuid="07b307ed-47ce-4931-b3e0-9a8ffb55995c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
